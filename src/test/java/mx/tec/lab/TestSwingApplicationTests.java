@@ -22,4 +22,21 @@ class TestSwingApplicationTests {
 		assertEquals(expectedResult, result);
 	}
 
+	@Test
+	void givenInvalidCharsWhenSumThenNoResult() {
+		//Given
+		application.numberOneTextField.setText("ddsadsa5fds");
+		application.numberTwoTextField.setText("");
+		String expectedResult = "";
+		//When
+		application.operationButton.doClick();
+		
+		//then
+		String input1 = application.numberOneTextField.getText();
+		String input2 = application.numberTwoTextField.getText();
+		String result = application.resultTextField.getText();
+		assertEquals(expectedResult, input1);
+		assertEquals(expectedResult, input2);
+		assertEquals(expectedResult, result);
+	}
 }

@@ -53,10 +53,27 @@ public class TestSwingApplication extends JFrame {
 
 		operationButton = new JButton("sum");		
 		operationButton.addActionListener(e -> {
-			int a = Integer.parseInt(numberOneTextField.getText());
-			int b = Integer.parseInt(numberTwoTextField.getText());
-			int c = a + b;
-			resultTextField.setText(String.valueOf(c));
+			/* trimmer
+			numberOneTextField.setText(numberOneTextField.getText().replaceAll("[^0-9]", ""));
+			numberTwoTextField.setText(numberTwoTextField.getText().replaceAll("[^0-9]", ""));
+			if(numberOneTextField.getText().isEmpty()) {
+				numberOneTextField.setText("0");
+			}
+			if(numberTwoTextField.getText().isEmpty()) {
+				numberTwoTextField.setText("0");
+			}
+			*/
+			
+			try{
+				int a = Integer.parseInt(numberOneTextField.getText());
+				int b = Integer.parseInt(numberTwoTextField.getText());
+				int c = a + b;
+				resultTextField.setText(String.valueOf(c));
+			} catch(Exception err) {
+				numberOneTextField.setText("");
+				numberTwoTextField.setText("");	
+				resultTextField.setText("");
+			}						
 		});		
 	}
 
